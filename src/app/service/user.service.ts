@@ -2,6 +2,7 @@ import { HttpClient, HttpErrorResponse, HttpEvent } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { CustomHttpResponse } from '../model/custom-http-response';
 import { User } from '../model/user';
 
 @Injectable({
@@ -24,12 +25,12 @@ export class UserService {
     return this.http.post<User>(`${this.host}/user/atualizar`, formData);
   }
 
-  public excluir(username: string): Observable<any | HttpErrorResponse> {
-    return this.http.delete<any>(`${this.host}/user/excluir/${username}`);
+  public excluir(username: string): Observable<CustomHttpResponse | HttpErrorResponse> {
+    return this.http.delete<CustomHttpResponse>(`${this.host}/user/excluir/${username}`);
   }
 
-  public redefinirSenha(email: string): Observable<any | HttpErrorResponse> {
-    return this.http.get(`${this.host}/user/redefinirSenha/${email}`);
+  public redefinirSenha(email: string): Observable<CustomHttpResponse | HttpErrorResponse> {
+    return this.http.get<CustomHttpResponse>(`${this.host}/user/redefinirSenha/${email}`);
   }
 
   public atualizarAvatar(formData: FormData): Observable<HttpEvent<User> | HttpErrorResponse> {
