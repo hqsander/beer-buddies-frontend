@@ -9,9 +9,10 @@ import { UserService } from './service/user.service';
 import { AuthInterceptor } from './interceptor/auth.interceptor';
 import { AuthenticationGuard } from './guard/authentication.guard';
 import { NotifierModule } from 'angular-notifier';
+import { LoginComponent } from './component/login/login.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, LoginComponent],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, NotifierModule],
   providers: [
     AuthenticationGuard,
